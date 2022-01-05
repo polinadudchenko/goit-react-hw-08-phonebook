@@ -6,7 +6,7 @@ import Filter from 'components/Filter'
 import Section from 'components/Section'
 import {contactsSelectors} from 'redux/contacts'
 
-function Contacts(contacts, fetchContacts) {
+function Contacts(contacts) {
 
     return <div>
         <Section title="Create a new Contact">
