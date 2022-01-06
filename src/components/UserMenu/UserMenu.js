@@ -9,7 +9,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center'
   },
   userName: {
-    /* textTransform: 'uppercase', */
     fontSize: '16px',
   },
   button: {
@@ -22,13 +21,13 @@ const useStyles = makeStyles(() => ({
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-  const name = useSelector(authSelectors.getUserName);
+  const email = useSelector(authSelectors.getUserEmail);
 
   const { userGreet, userName, button } = useStyles();
 
   return (
     <div className={userGreet}>
-      <span className={userName}>Welcome, {name}</span>
+      <span className={userName}>Welcome, {email}</span>
       <Button onClick={() => dispatch(authOperations.logOut())} className={button}>
         Logout
       </Button>
