@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles(() => ({
   phoneBook: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-around',
   },
 }));
