@@ -2,6 +2,8 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import PrivateRoute from 'components/PrivateRoutes';
+import PublicRoute from 'components/PublicRoutes';
 
 import { HomePage } from 'views/HomePage';
 import Layout from 'components/Layout';
@@ -29,9 +31,9 @@ export default function App() {
         <Routes>
             <Route path="*" element={<Layout />}>
               <Route index element={<HomePage />} />
-              <Route path="register" element={<AsyncRegistrationPage />} />
-              <Route path="login" element={<AsyncLoginPage />}/>
-              <Route path="contacts" element={<AsyncContactsPage />}/>
+              <Route path='register' element={<PublicRoute redirectTo='/contacts' restricted> <AsyncRegistrationPage /> </PublicRoute> }/>
+              <Route path='login' element={<PublicRoute redirectTo='/contacts' restricted> <AsyncLoginPage /> </PublicRoute> }/>
+              <Route path='contacts' element={<PrivateRoute><AsyncContactsPage /></PrivateRoute>}/>
               <Route path="*" element={<Navigate to={'/'} />} />
             </Route>
         </Routes>
