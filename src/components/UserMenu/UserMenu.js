@@ -1,30 +1,37 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from 'redux/auth';
+import { Button, makeStyles } from '@material-ui/core';
 
-const styles = {
-  container: {
+const useStyles = makeStyles(() => ({
+  userGreet: {
+    marginLeft: 'auto',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
-  avatar: {
-    marginRight: 4,
+  userName: {
+    /* textTransform: 'uppercase', */
+    fontSize: '16px',
   },
-  name: {
-    fontWeight: 700,
-    marginRight: 12,
-  },
-};
+  button: {
+    color: 'inherit',
+    fontSize: '16px',
+    marginLeft: '10px'
+  }
+  
+}));
 
 export default function UserMenu() {
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUserName);
 
+  const { userGreet, userName, button } = useStyles();
+
   return (
-    <div >
-      <span style={styles.name}>Welcome, {name}</span>
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
+    <div className={userGreet}>
+      <span className={userName}>Welcome, {name}</span>
+      <Button onClick={() => dispatch(authOperations.logOut())} className={button}>
         Logout
-      </button>
+      </Button>
     </div>
   );
 }

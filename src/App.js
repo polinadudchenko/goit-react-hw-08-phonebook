@@ -33,7 +33,7 @@ export default function App() {
               <Route index element={<HomePage />} />
               <Route path='register' element={<PublicRoute redirectTo='/contacts' restricted> <AsyncRegistrationPage /> </PublicRoute> }/>
               <Route path='login' element={<PublicRoute redirectTo='/contacts' restricted> <AsyncLoginPage /> </PublicRoute> }/>
-              <Route path='contacts' element={<PrivateRoute><AsyncContactsPage /></PrivateRoute>}/>
+              <Route path='contacts' element={<PrivateRoute redirectTo='/login'><AsyncContactsPage /></PrivateRoute>}/>
               <Route path="*" element={<Navigate to={'/'} />} />
             </Route>
         </Routes>

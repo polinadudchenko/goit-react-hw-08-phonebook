@@ -1,18 +1,7 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { token } from 'services/axious-settings'
 import * as userApi from 'services/user-api'
-//axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
-/* const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
- */
 /*
  * POST @ /users/signup
  * body: { name, email, password }

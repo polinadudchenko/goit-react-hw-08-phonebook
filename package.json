@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://polinadudchenko.github.io/goit-react-hw-08-phonebook",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
