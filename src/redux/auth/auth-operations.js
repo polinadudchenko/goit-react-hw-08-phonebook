@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { token } from 'services/axious-settings'
 import * as userApi from 'services/user-api'
-import Alert from '@material-ui/Alert'
+import Alert from '@material-ui/lab/Alert'
 
 const register = createAsyncThunk('auth/register', async credentials => {
     try {
