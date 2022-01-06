@@ -2,13 +2,23 @@ import { connect } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
-import Filter from 'components/Filter'
-import Section from 'components/Section'
-import {contactsSelectors} from 'redux/contacts'
+import Filter from 'components/Filter';
+import Section from 'components/Section';
+import { contactsSelectors } from 'redux/contacts';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles(() => ({
+  phoneBook: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+}));
 
 function Contacts(contacts) {
+  const { phoneBook } = useStyles();
 
-    return <div>
+    return <div className={phoneBook}>
         <Section title="Create a new Contact">
         <ContactForm/>
         </Section>

@@ -1,22 +1,43 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import { TextField, Button, makeStyles } from '@material-ui/core';
 
-const styles = {
+
+const useStyles = makeStyles(() => ({
+  login: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  loginHeader: {
+    marginBottom: '10px',
+    color: '#414141'
+  },
   form: {
     width: 320,
-  },
-  label: {
     display: 'flex',
     flexDirection: 'column',
-    marginBottom: 15,
+    
   },
-};
+  textField: {
+    marginBottom: '15px'
+  },
+  btn: {
+    alignSelf: 'center',
+    width: '100px',
+    backgroundColor: '#eaeaea',
+    color: '#414141',
+  }
+}));
+
 
 export default function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { form, login, btn, loginHeader, textField } = useStyles();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,31 +59,29 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className={login}>
+      <h2 className={loginHeader}>Login</h2>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Email
-          <input
+      <form onSubmit={handleSubmit} className={form} autoComplete="off">
+          <TextField
+            label='Email'
             type="email"
             name="email"
             value={email}
+          className={textField}
             onChange={handleChange}
           />
-        </label>
-
-        <label style={styles.label}>
-          Password
-          <input
+        
+          <TextField
+            label='Password'
             type="password"
             name="password"
-            value={password}
+          value={password}
+          className={textField}
             onChange={handleChange}
           />
-        </label>
 
-        <button type="submit">Get in</button>
+        <Button type="submit" className={btn}>Get in</Button>
       </form>
     </div>
   );

@@ -1,23 +1,44 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import { TextField, Button, makeStyles } from '@material-ui/core';
 
-const styles = {
+
+const useStyles = makeStyles(() => ({
+  register: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  registerHeader: {
+    marginBottom: '10px',
+    color: '#414141'
+  },
   form: {
     width: 320,
-  },
-  label: {
     display: 'flex',
     flexDirection: 'column',
-    marginBottom: 15,
+    
   },
-};
+  textField: {
+    marginBottom: '15px'
+  },
+  btn: {
+    alignSelf: 'center',
+    width: '100px',
+    backgroundColor: '#eaeaea',
+    color: '#414141',
+  }
+}));
+
 
 export default function Registration() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { form, register, btn, registerHeader, textField } = useStyles();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,42 +57,39 @@ export default function Registration() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(authOperations.register({ name, email, password }));
-    /* setName('');
+    setName('');
     setEmail('');
-    setPassword(''); */
+    setPassword('');
   };
 
   return (
-    <div>
-      <h1>Register now</h1>
+    <div className={register}>
+      <h1 className={registerHeader}>Register now</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+      <form onSubmit={handleSubmit} className={form} autoComplete="off">
+          <TextField
+            label='Name' type="text" name="name" value={name} className={textField} onChange={handleChange} />
 
-        <label style={styles.label}>
-          Email
-          <input
+        
+          <TextField
+            label='Email'
             type="email"
             name="email"
-            value={email}
+          value={email}
+          className={textField} 
             onChange={handleChange}
           />
-        </label>
 
-        <label style={styles.label}>
-          Password
-          <input
+          <TextField
+            label='Password'
             type="password"
             name="password"
-            value={password}
+          value={password}
+          className={textField} 
             onChange={handleChange}
           />
-        </label>
 
-        <button type="submit">Register</button>
+        <Button type="submit" className={btn}>Register</Button>
       </form>
     </div>
   );

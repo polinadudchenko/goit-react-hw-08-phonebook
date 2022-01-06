@@ -48,7 +48,7 @@ export default function Layout() {
   const { header, styledLogo, styledToolbar, styledAppbar, container } = useStyles();
 
   const logo = (
-    <Typography variant="h2" component="h1" className={styledLogo}>
+    <Typography variant="h3" component="h1" className={styledLogo}>
       Phonebook
     </Typography>
   );
